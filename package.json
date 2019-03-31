@@ -1,0 +1,36 @@
+{
+  "name": "redux-promise-plus",
+  "version": "1.0.0",
+  "description": "promise middleware for Redux.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redux",
+    "promise",
+    "middleware",
+    "redux-middleware",
+    "fsa",
+    "flux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuya227939/redux-promise-plus.git"
+  },
+  "homepage": "https://github.com/xuya227939/redux-promise-plus",
+  "author": "Liu Jiang <hezhiqianye@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "flux-standard-action": "^2.0.3",
+    "is-promise": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "babel-core": "^7.0.0-0",
+  }
+}
