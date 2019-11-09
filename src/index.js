@@ -1,16 +1,18 @@
 import isPromise from 'is-promise';
-import { isFSA } from 'flux-standard-action';
 
-export default function promisePlusMiddleware({ dispatch }) {
+export default function reduxMiddleware({ dispatch }) {
     return next => action => {
-        if (!isFSA(action)) {
-            return next(action);
-        }
         if(isPromise(action.payload)) {
-            dispatch({ ...action, payload: '', isLoading: true });
+            dispatch({ ...action, payload: { isLoading: true } });
             return action.payload
-                .then(result => dispatch({ ...action, payload: result, isLoading: false }))
-                .catch(error => dispatch({ ...action, payload: error, error: true, isLoading: false }));
+                .then(result => {
+                    result.isLoading = false;
+                    dispatch({ ...action, payload: result});
+                })
+                .catch(error => {
+                    error.isLoading = false;
+                    dispatch({ ...action, payload: error, error: true});
+                });
         }
         return next(action);
     };
